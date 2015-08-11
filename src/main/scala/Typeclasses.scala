@@ -1,8 +1,9 @@
 /**
  * Created by pnagarjuna on 11/08/15.
  */
-object Typeclasses {
+object TypeClasses {
   trait JsonConverter[A] {
-    def toJson: String
+    def toJson(a: A): String
   }
+  def getJson[A](a: A)(implicit jsonConverter: JsonConverter[A]): String = jsonConverter.toJson(a)
 }
